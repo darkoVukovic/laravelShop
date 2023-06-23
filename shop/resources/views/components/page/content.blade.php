@@ -1,0 +1,1 @@
+<p>main content if view is present</p>
