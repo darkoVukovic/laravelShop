@@ -50,6 +50,15 @@ class Items extends Model
         if($filters['category'] ?? false) {
             $query->where('category_names', 'like', '%'.request('category').'%');
         }
+
+        if($filters['user'] ?? false) {
+            
+             $query->addSelect('id_shopItem' ,'imagePath','about','price','product_name','category_names','category_id'  , 'follow_item.created_at AS created_at')
+            ->join('follow_item', 'item_category_view.id_shopItem', '=', 'follow_item.item_id')
+            ->join('users', 'follow_item.user_id', '=', 'users.id')
+            ->where('follow_item.user_id', auth()->id());
+            
+        }
     } 
 
     public  function storeNewItem ($values) {

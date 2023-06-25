@@ -7,6 +7,7 @@
 }
 body {
     min-height: 100vh;
+    position: relative;
 }
 /** header */
 header {
@@ -113,6 +114,19 @@ aside {
     align-items: center;
 }
 
+#messageBox {
+    position: fixed;
+    top:0;
+    left: 50%;
+    background-color: steelblue;
+    padding: 10px;
+}
+
+#createItemForm {
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+}
 /** phone **/
 
 @media (max-width: 600px) {
@@ -120,3 +134,5 @@ aside {
         display: none;
     }
   }
+
+
