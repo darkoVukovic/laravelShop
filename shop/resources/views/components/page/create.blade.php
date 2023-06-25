@@ -1,6 +1,6 @@
 
-<div>
-    <form action="{{url('product')}}" method="POST" enctype="multipart/form-data">
+<div style='width: 400px;margin: 40px auto'>
+    <form action="{{url('product')}}" method="POST" enctype="multipart/form-data" id='createItemForm'>
         @csrf
         <input type="FILE" name='image'>
         <label for="name">Naziv</label>

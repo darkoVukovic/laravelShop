@@ -1,6 +1,6 @@
 <div style='width:calc(100% - 400px);display:flex;justify-content:space-around'>
     <div>
-        <div style='margin: 20px' class='items'>
+        <div style='margin: 20px' class='items' itemId='{{$item->id_shopItem}}'>
             <div>
                 <img src="{{ asset(config('constants.IMAGE_BASE_PATH')) . '/'. $item->imagePath}}" alt="Item Image">
                 <h3>Item:{{$item->product_name}}</h3>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div style='text-align:center'>
-                <a href="{{url('/')}}">kupi</a>
+                <button id='followItemBtn'>prati</button>
                 @auth
 
                 <?php if($seller->id == auth()->id()) { 
@@ -33,3 +33,4 @@
     </div>
 </div>
     
+<script src="{{ url('js/index.js') }}"></script>

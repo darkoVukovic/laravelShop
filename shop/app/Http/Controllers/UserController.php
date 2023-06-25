@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-
+ 
 
 
     public function create () {
@@ -65,5 +65,17 @@ class UserController extends Controller
         }
 
         return back()->withErrors(['email' => 'neispravni podaci'])->onlyInput('email');
+    } 
+
+    public function storeFollowItem (Request $request) {
+        $formFields = $request->validate([
+            'item_id' => ['required'],
+        ]);
+        $formFields['user_id'] = auth()->id();        
+        $userModel = new User();
+
+        $userModel->storeItemFollow($formFields);
+        
+
     } 
 }

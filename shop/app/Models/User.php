@@ -21,7 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone_number'
+        'phone_number',
+        'item_id',
+        'user_id'
     ];
 
     /**
@@ -42,6 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public $timestamps = true;
 
     public function items () {
         return $this->hasMany(Items::class, 'user_id');
@@ -49,5 +52,15 @@ class User extends Authenticatable
 
     public function getSellerById ($id) {
         return User::where('id', $id)->first();
+    } 
+
+
+
+    public function storeItemFollow ($values) {
+        $this->table = 'follow_item';
+        User::create([
+            'item_id' => $values['item_id'],
+            'user_id' => $values['user_id']
+         ]);
     } 
 }

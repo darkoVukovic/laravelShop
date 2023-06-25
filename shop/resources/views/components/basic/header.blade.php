@@ -15,6 +15,8 @@
     <span>dobrodosao {{auth()->user()->name}} |</span>
     <a href="{{url('products/manage')}}">manage products | </a>
     <a href="{{url('product/create')}}">postavi item | </a>
+    <a href="{{url('?user='.auth()->id())}}">prateci itemi | </a>
+
     <form method="POST" action="{{url('logout')}}">
         @csrf
         <button type="submit">logout</button>

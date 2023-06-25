@@ -17,7 +17,12 @@ class Eshop extends Controller
       $this->template['view'] = 'index';
       $itemsModel = new Items();
       //$this->template['items'] = $itemsModel->index();
-      $this->template['items'] = Items::latest()->filter(request(['search', 'category']))->paginate(12);
+      if(request('user') ) {
+         if(auth()->check() === false)          return redirect('/login')->with('message', 'moras biti prijavljenj da bi video pratecu listu');     
+         if(auth()->id() != request('user')) return redirect('/?user='.auth()->id())->with('message', 'invalidan id');    
+      }
+
+      $this->template['items'] = Items::latest()->filter(request(['search', 'category', 'user']))->paginate(12);
       $this->template['renderContentData'] = ['items'];
       
       return view('eshop', $this->template);
@@ -107,6 +112,6 @@ class Eshop extends Controller
          $categoryModel->deleteProductCategories($id);
          $deletion = $itemModel->myDestroy($id);
          
-         return redirect('/')->with('message', 'product deleted {{$deletion}}' );
+         return redirect('/')->with('message', 'izbrisan item sa id-jem:'.$id );
    } 
 }
