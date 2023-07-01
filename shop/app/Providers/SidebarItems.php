@@ -23,7 +23,7 @@ class SidebarItems extends ServiceProvider
     /**
      * Bootstrap services.
      *
-     * @return void
+    * @return void
      */
     public function boot()
     {

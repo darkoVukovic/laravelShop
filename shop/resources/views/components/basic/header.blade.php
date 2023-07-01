@@ -10,10 +10,14 @@
    @endforeach
 </ul>
 
-<div>
+
+<div id='mobile_menu'>
+        <button>Menu</button>
+</div>
+<ul id='user_details'>
     @auth
     <span>dobrodosao {{auth()->user()->name}} |</span>
-    <a href="{{url('products/manage')}}">manage products | </a>
+    <a href="{{url('products/manage')}}">Tvoji itemi | </a>
     <a href="{{url('product/create')}}">postavi item | </a>
     <a href="{{url('?user='.auth()->id())}}">prateci itemi | </a>
 
@@ -26,4 +30,4 @@
     <a href="{{url('login')}}">login</a>
     <a href="{{url('register')}}">register</a>
     @endauth
-</div>
+</ul>

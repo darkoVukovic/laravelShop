@@ -8,6 +8,7 @@
 body {
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 /** header */
 header {
@@ -127,12 +128,84 @@ aside {
     flex-flow: column;
     margin: 0 auto;
 }
+
+#createItemForm input {
+    border:1px solid #333;
+}
+
+#createItemForm select {
+    border:1px solid #333;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    height: 70px;
+    bottom: 0;
+    left: 0;
+    background-color: steelblue;
+}
+#mobile_menu {
+    display: none;
+}
 /** phone **/
 
 @media (max-width: 600px) {
     aside {
         display: none;
     }
+
+    
+footer {
+    width: 100%;
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    background-color: steelblue;
+}
+
+footer h1 {
+    font-size: 15px !important;
+}
+
+#user_details {
+    display:none;
+}
+
+#mobile_menu {
+    display: block;
+    background-color: #333;
+    color: #ccc;
+}
+#items, .items{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+    grid-template-rows:  repeat(auto-fill, minmax(350px, 450px));
+    grid-gap: 10px;
+    text-align: center;
+    justify-content: flex-start;
+}
+
+#items img , .items  img {
+    max-width: 70%;
+    display: block;
+    margin:  0 auto;
+    max-height: 100%;
+    
+}
+#items > div, .items > div {
+    border: 2px solid #333;
+    padding: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+
+    
+}
+
+
   }
 
 

@@ -49,8 +49,8 @@ Route::delete('/product/{id}', [Eshop::class, 'destroy'])->middleware('auth');
 
 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
-// Route::get('/user/followlist', [UserController::class, 'index']);
 
+Route::get('/products/manage', [UserController::class, 'manageItems']);
 
 
 /// ajax

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Items;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -71,11 +72,22 @@ class UserController extends Controller
         $formFields = $request->validate([
             'item_id' => ['required'],
         ]);
+
         $formFields['user_id'] = auth()->id();        
         $userModel = new User();
 
-        $userModel->storeItemFollow($formFields);
+        if($userModel->storeItemFollow($formFields) !== false) {
+            echo "vec dodati item";
+        }
         
 
+    } 
+
+    public function manageItems () {
+        $itemsModel = new Items();
+        $this->template['view'] = 'userItems';
+        $this->template['items'] =  $itemsModel ->getUserItems(auth()->id());
+        $this->template['renderContentData']= ['items'];
+        return view('eshop', $this->template);
     } 
 }

@@ -51,7 +51,7 @@ class User extends Authenticatable
     } 
 
     public function getSellerById ($id) {
-        return User::where('id', $id)->first();
+        return User::where('id', $id)->firstOrFail();
     } 
 
 
@@ -62,5 +62,6 @@ class User extends Authenticatable
             'item_id' => $values['item_id'],
             'user_id' => $values['user_id']
          ]);
+         
     } 
 }

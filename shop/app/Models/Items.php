@@ -23,7 +23,7 @@ class Items extends Model
     public function show ($id, $productName) {
         return Items::where('id_shopItem', $id, 'and')
                     ->where('product_name', $productName)
-                    ->first();
+                    ->firstOrFail();
     } 
 
     public function getCategoryProducts ($id, $productName) {
@@ -39,6 +39,12 @@ class Items extends Model
                     ->get();
     } 
 
+
+    public function getUserItems ($id) {
+        $this->table = 'item_category_view';
+        
+        return Items::where('user_id', $id)->paginate(5);
+    } 
 
     public function scopeFilter ($query, array $filters) {
         if($filters['search'] ?? false) {

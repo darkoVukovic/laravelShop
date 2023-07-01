@@ -29,12 +29,15 @@
         <div id='content'>
             @component('components.basic.sidebar', ($categories ? compact('categories') : []))
             @endcomponent
- 
+            
+            
             @component('components.page.'.$view, ($renderContentData ? compact($renderContentData) : []))
             @endcomponent
         </div>
     </main>
     <x-flash-message />
+    <x-footer />
+
 </body>
 </html>
 
@@ -48,5 +51,15 @@
                     $('#messageBox').remove();
                 }, 2000);
             }
-                })
+
+            
+        let menuBtn = $('#mobile_menu');
+
+        menuBtn.on('click', () => {
+            alert('soon');
+        })
+        })
+
+
+                
 </script>

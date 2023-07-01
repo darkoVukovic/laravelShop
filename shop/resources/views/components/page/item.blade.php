@@ -1,3 +1,5 @@
+
+
 <div style='width:calc(100% - 400px);display:flex;justify-content:space-around'>
     <div>
         <div style='margin: 20px' class='items' itemId='{{$item->id_shopItem}}'>
@@ -9,7 +11,6 @@
             </div>
         </div>
         <div style='text-align:center'>
-                <button id='followItemBtn'>prati</button>
                 @auth
 
                 <?php if($seller->id == auth()->id()) { 
@@ -20,6 +21,12 @@
                            <button class="text-red-500"><i class="fa-solid fa-trash">delete</i></button>
                         </form>
                 <?php }
+                else {
+                    ?>
+                                    <button id='followItemBtn'>prati</button>
+
+                    <?php
+                }
                 ?>
            
                 @endauth

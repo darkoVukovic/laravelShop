@@ -52,6 +52,7 @@ class Eshop extends Controller
    public function store (Request $request) {
      $formFields = $request->validate([
       'name' => 'required',
+      'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
       'about' => 'required',
       'price' => 'required',
       'categories' => 'required',
